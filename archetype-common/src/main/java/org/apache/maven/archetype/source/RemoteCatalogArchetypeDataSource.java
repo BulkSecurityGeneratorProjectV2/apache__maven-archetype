@@ -21,6 +21,7 @@ package org.apache.maven.archetype.source;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 
@@ -158,7 +159,7 @@ public class RemoteCatalogArchetypeDataSource extends CatalogArchetypeDataSource
 
         Wagon wagon = getWagon( wagonRepository );
 
-        File catalog = File.createTempFile( "archetype-catalog", ".xml" );
+        File catalog = Files.createTempFile( "archetype-catalog", ".xml" ).toFile();
         try
         {
             wagon.connect( wagonRepository, authInfo, proxyInfo );
